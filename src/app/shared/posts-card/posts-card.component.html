@@ -1,5 +1,5 @@
-<div class="card pt-5 pb-1 px-5 mb-5" *ngIf="posts$ | async as posts">
-  <div *ngFor="let post of posts; let i = index" class="mb-4">
+<div class="card p-5 mb-5" *ngIf="posts$ | async as posts">
+  <div *ngFor="let post of posts; let i = index" class="mb-4 posts">
     <p class="title text-primary">{{ i + 1 }} - {{ post.title | titlecase }}</p>
     <p class="body">{{ post.body }}.</p>
   </div>

@@ -8,3 +8,7 @@
 .body::first-letter {
   text-transform: uppercase;
 }
+
+.posts:last-child {
+  margin-bottom: 0 !important;
+}
