@@ -1,6 +1,6 @@
 <div class="card p-5" *ngIf="posts$ | async as posts">
   <div *ngFor="let post of posts" class="my-3">
-    <p class="title text-primary">{{ post.title }}</p>
+    <p class="title text-primary">{{ post.title | titlecase }}</p>
     <p class="body">{{ post.body }}.</p>
   </div>
 </div>
