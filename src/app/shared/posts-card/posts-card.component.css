@@ -1,0 +1,14 @@
+.title {
+  font-size: 25px;
+  font-weight: bold;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.body {
+  font-size: 18px;
+}
+
+.body::first-letter {
+  text-transform: uppercase;
+}

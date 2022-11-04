@@ -1,0 +1,12 @@
+<main class="container">
+  <section
+    class="title-section d-flex flex-column mt-5 justify-content-center align-items-center"
+  >
+    <h1 class="text-primary">Fake Crud</h1>
+    <p>A CRUD that uses Fake API as resource</p>
+  </section>
+
+  <section class="posts">
+    <app-posts-card [posts$]="posts$"></app-posts-card>
+  </section>
+</main>
