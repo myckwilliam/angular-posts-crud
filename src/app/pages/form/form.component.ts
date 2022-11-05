@@ -25,6 +25,7 @@ export class FormComponent implements OnInit {
   private postId: string | null = this.route.snapshot.paramMap.get('postId');
 
   isLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isUpdate = false;
 
   form = this.fb.group({
     id: [{ value: '', disabled: true }],
@@ -34,6 +35,7 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.postId) {
+      this.isUpdate = true;
       this.isLoading$.next(true);
       this.postService
         .getOnePost(this.postId)
