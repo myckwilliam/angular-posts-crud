@@ -9,6 +9,10 @@
   text-transform: uppercase;
 }
 
+.body {
+  white-space: pre-line;
+}
+
 .posts:last-child {
   margin-bottom: 0 !important;
 }

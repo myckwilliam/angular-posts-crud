@@ -1,7 +1,8 @@
 import { Observable } from 'rxjs';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Post } from 'src/app/models/post';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-posts-card',
@@ -10,10 +11,12 @@ import { Post } from 'src/app/models/post';
   templateUrl: './posts-card.component.html',
   styleUrls: ['./posts-card.component.css'],
 })
-export class PostsCardComponent implements OnInit {
+export class PostsCardComponent {
   @Input() posts$: Observable<Post[]> = new Observable<Post[]>();
 
-  constructor() {}
+  private router = inject(Router);
 
-  ngOnInit(): void {}
+  navigateToForm(id: number) {
+    this.router.navigate([`form/${id}`]);
+  }
 }

@@ -1,1 +1,46 @@
-<p>form works!</p>
+<app-loading [isLoading$]="isLoading$"></app-loading>
+
+<main class="container p-5" *ngIf="!(isLoading$ | async)">
+  <form class="needs-validation" [formGroup]="form">
+    <div class="mb-3 form-group">
+      <label for="exampleFormControlInput1" class="form-label">Title</label>
+      <input
+        type="text"
+        formControlName="title"
+        [ngClass]="
+          form.get('title')?.touched && form.get('title')?.errors
+            ? 'is-invalid'
+            : ''
+        "
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="Your title here..."
+      />
+      <div class="invalid-feedback">Title is required</div>
+    </div>
+    <div class="mb-3">
+      <label for="validationTextarea" class="form-label">Body</label>
+      <textarea
+        rows="4"
+        class="form-control"
+        formControlName="body"
+        id="validationTextarea"
+        [ngClass]="
+          form.get('body')?.touched && form.get('body')?.errors
+            ? 'is-invalid'
+            : ''
+        "
+        placeholder="Your content here..."
+        required
+      ></textarea>
+      <div class="invalid-feedback">
+        Please enter a content in the textarea.
+      </div>
+    </div>
+    <div class="col-12">
+      <button class="btn btn-primary" type="button" (click)="handleSubmit()">
+        Submit form
+      </button>
+    </div>
+  </form>
+</main>

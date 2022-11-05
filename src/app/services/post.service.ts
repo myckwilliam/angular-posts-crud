@@ -16,7 +16,19 @@ export class PostService {
     return this.http.get<Post[]>(this.url);
   }
 
-  getOnePost(id: number): Observable<Post> {
+  getOnePost(id: string): Observable<Post> {
     return this.http.get<Post>(`${this.url}/${id}`);
+  }
+
+  updatePost(id: string, post: Partial<Post>): Observable<Post> {
+    return this.http.put<Post>(`${this.url}/${id}`, post);
+  }
+
+  createPost(post: Partial<Post>): Observable<Post> {
+    return this.http.post<Post>(this.url, post);
+  }
+
+  removePost(id: string): Observable<Object> {
+    return this.http.delete(`${this.url}/${id}`);
   }
 }
