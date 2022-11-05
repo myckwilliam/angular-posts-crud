@@ -6,6 +6,12 @@
     <p>A CRUD that uses Fake API as resource</p>
   </section>
 
+  <section class="create mb-3 d-flex justify-content-end">
+    <button class="btn btn-primary" (click)="onCreateClick()">
+      Create a new post
+    </button>
+  </section>
+
   <section class="posts">
     <app-posts-card [posts$]="posts$"></app-posts-card>
   </section>

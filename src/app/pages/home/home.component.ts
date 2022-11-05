@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PostService } from 'src/app/services/post.service';
 import { Observable, take } from 'rxjs';
@@ -13,11 +14,17 @@ import { PostsCardComponent } from 'src/app/shared/posts-card/posts-card.compone
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  private router = inject(Router);
+
   posts$: Observable<Post[]> = new Observable<Post[]>();
 
   constructor(private postService: PostService) {}
 
   ngOnInit(): void {
     this.posts$ = this.postService.getPosts().pipe(take(1));
+  }
+
+  onCreateClick() {
+    this.router.navigate(['form']);
   }
 }
