@@ -55,25 +55,9 @@ export class FormComponent implements OnInit {
 
   onCreate() {
     const { title, body } = this.form.value;
-    this.postService
-      .createPost({ title, body })
-      .pipe(take(1))
-      .subscribe({
-        next: (data) => {
-          console.log(data);
-          this.router.navigate(['']);
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
-  }
-
-  onUpdate() {
-    const { title, body } = this.form.value;
-    this.postId &&
+    if (this.form.valid) {
       this.postService
-        .updatePost(this.postId, { title, body })
+        .createPost({ title, body })
         .pipe(take(1))
         .subscribe({
           next: (data) => {
@@ -84,6 +68,30 @@ export class FormComponent implements OnInit {
             console.log(err);
           },
         });
+    } else {
+      return;
+    }
+  }
+
+  onUpdate() {
+    const { title, body } = this.form.value;
+    if (this.form.valid) {
+      this.postId &&
+        this.postService
+          .updatePost(this.postId, { title, body })
+          .pipe(take(1))
+          .subscribe({
+            next: (data) => {
+              console.log(data);
+              this.router.navigate(['']);
+            },
+            error: (err) => {
+              console.log(err);
+            },
+          });
+    } else {
+      return;
+    }
   }
 
   onRemove() {

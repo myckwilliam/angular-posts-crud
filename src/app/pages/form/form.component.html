@@ -47,6 +47,7 @@
         style="width: 49%"
         type="button"
         (click)="onUpdate()"
+        [disabled]="form.invalid"
       >
         Update
       </button>
@@ -65,6 +66,7 @@
         class="btn col-12 btn-primary btn-block"
         type="button"
         (click)="onCreate()"
+        [disabled]="form.invalid"
       >
         Create
       </button>
